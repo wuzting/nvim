@@ -5,7 +5,7 @@ local options = {
   },
   disable_netrw = true,
   hijack_netrw = true,
-  hijack_cursor = true,
+  hijack_cursor = false,
   hijack_unnamed_buffer_when_opening = false,
   sync_root_with_cwd = true,
   update_focused_file = {
