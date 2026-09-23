@@ -284,25 +284,6 @@ local default_plugins = {
     --         require("osc52").setup(opts)
     --     end,
     -- },
-    -- {
-    --     "olimorris/codecompanion.nvim",
-    --     -- cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionEdit" }, -- 延迟加载
-    --     lazy = false,
-    --     init = function()
-    --         require("core.utils").load_mappings("codecompanion")
-    --     end,
-    --
-    --     dependencies = {
-    --         "nvim-lua/plenary.nvim",
-    --         "nvim-treesitter/nvim-treesitter",
-    --     },
-    --     opts = function()
-    --         return require "plugins.configs.codecompanion"
-    --     end,
-    --     config = function(_, opts)
-    --         require("codecompanion").setup(opts)
-    --     end,
-    -- },
 
     {
         "MeanderingProgrammer/render-markdown.nvim",
