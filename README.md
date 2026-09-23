@@ -24,7 +24,7 @@ Neovim 个人配置，设计思路参考 [NvChad](https://github.com/NvChad/NvCh
 # 先备份已有配置
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
 
-git clone git@github.com:wuzting/nvim.git ~/.config/nvim
+git clone git@github.com:wuzting/wznvim.git ~/.config/nvim
 nvim
 ```
 

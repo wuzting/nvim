@@ -25,7 +25,7 @@ for editing, LSP, completion, Git, terminals and AI agents.
 # Back up any existing config first
 mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null
 
-git clone git@github.com:wuzting/nvim.git ~/.config/nvim
+git clone git@github.com:wuzting/wznvim.git ~/.config/nvim
 nvim
 ```
 
