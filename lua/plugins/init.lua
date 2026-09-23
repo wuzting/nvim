@@ -68,6 +68,26 @@ local default_plugins = {
         end,
     },
 
+    -- code outline， 代码大纲 / 符号列表
+    {
+        "stevearc/aerial.nvim",
+        tag = "v3.1.0",
+        cmd = { "AerialToggle", "AerialOpen", "AerialNext", "AerialPrev" },
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+        init = function()
+            require("core.utils").load_mappings("aerial")
+        end,
+        opts = function()
+            return require("plugins.configs.aerial")
+        end,
+        config = function(_, opts)
+            require("aerial").setup(opts)
+        end,
+    },
+
     -- file tree， 文件树
     {
         "nvim-telescope/telescope.nvim",

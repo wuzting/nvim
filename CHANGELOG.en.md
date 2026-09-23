@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - An MIT `LICENSE`.
 - GitHub Actions CI (StyLua format check + luacheck static analysis).
 - `.luacheckrc` and `stylua.toml` configuration.
+- `aerial.nvim` code outline (right-side symbol list, pinned to v3.1.0 for Neovim 0.11) with `<leader>a*` keymaps.
 
 ### Changed
 - Rename the repository to `wznvim` and update all references.

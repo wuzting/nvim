@@ -661,4 +661,14 @@ M.opencode = {
         },
     },
 }
+M.aerial = {
+    plugin = true,
+
+    n = {
+        ["<leader>at"] = { "<cmd> AerialToggle! <CR>", "toggle outline" },
+        ["<leader>ao"] = { "<cmd> AerialOpen <CR>", "focus outline" },
+        ["<leader>an"] = { "<cmd> AerialNext <CR>", "next symbol" },
+        ["<leader>ap"] = { "<cmd> AerialPrev <CR>", "previous symbol" },
+    },
+}
 return M

@@ -14,6 +14,7 @@
 - 新增 MIT `LICENSE`。
 - 新增 GitHub Actions CI（StyLua 格式检查 + luacheck 静态检查）。
 - 新增 `.luacheckrc` 与 `stylua.toml` 配置。
+- 新增 aerial.nvim 代码大纲（右侧符号/函数列表，固定 v3.1.0 以兼容 Neovim 0.11），快捷键 `<leader>al` 等。
 
 ### 变更
 - 仓库重命名为 `wznvim`，并同步更新所有引用。
