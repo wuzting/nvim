@@ -53,14 +53,11 @@ Since this is a configuration repository, "testing" typically involves loading t
   - Custom extensions: `lua/custom/` (if exists)
 
 ### Indentation and Formatting
-- Use **2 spaces** for indentation (no tabs)
-- Use **double quotes** for strings consistently
-- No trailing commas in table definitions
-- Add a space before parentheses in function definitions: `function ()`
-- Use line breaks for long table definitions
+- Formatting is enforced by **StyLua**: run `stylua .` before committing. CI runs `stylua --check`.
+- See `stylua.toml` for the rules: **4 spaces**, double quotes, parentheses on calls.
 
 ### Imports and Requires
-- Use `require` without parentheses for string literals: `local utils = require "core.utils"`
+- StyLua normalises calls, so write `local utils = require("core.utils")`
 - For dynamic requires, use parentheses: `local module = require(some_variable)`
 - Group related requires together at the top of the file
 - Avoid circular dependencies

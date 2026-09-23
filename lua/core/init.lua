@@ -28,7 +28,7 @@ opt.numberwidth = 2
 opt.ruler = false
 
 -- disable nvim intro
-opt.shortmess:append "sI"
+opt.shortmess:append("sI")
 
 opt.signcolumn = "yes"
 opt.splitbelow = true
@@ -42,23 +42,26 @@ opt.updatetime = 250
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
+opt.whichwrap:append("<>[]hl")
 
 opt.scrolloff = 10
 g.mapleader = " "
 
 -- add binaries installed by mason.nvim to path
 local is_windows = vim.loop.os_uname().sysname == "Windows_NT"
-vim.env.PATH = vim.env.PATH .. (is_windows and ";" or ":") .. vim.fn.stdpath "data" .. "/mason/bin"
+vim.env.PATH = vim.env.PATH
+    .. (is_windows and ";" or ":")
+    .. vim.fn.stdpath("data")
+    .. "/mason/bin"
 
 -- warning/ error 错误诊断显示在行内
-vim.diagnostic.config {
+vim.diagnostic.config({
     virtual_text = true,
     signs = true,
     underline = true,
     update_in_insert = false,
     -- severity_sort = true,
-}
+})
 
 -- vim.g.clipboard = {
 --     name = "OSC52",
@@ -75,52 +78,52 @@ vim.diagnostic.config {
 local osc52 = require("vim.ui.clipboard.osc52")
 
 vim.g.clipboard = {
-  name = "OSC52-safe",
+    name = "OSC52-safe",
 
-  -- 只用 OSC52 copy
-  copy = {
-    ["+"] = osc52.copy("+", { silent = true }),
-    ["*"] = osc52.copy("*", { silent = true }),
-  },
+    -- 只用 OSC52 copy
+    copy = {
+        ["+"] = osc52.copy("+", { silent = true }),
+        ["*"] = osc52.copy("*", { silent = true }),
+    },
 
-  -- paste：直接走默认（不走 OSC52）
-  paste = {
-    ["+"] = function()
-      return vim.fn.getreg("+"), vim.fn.getregtype("+")
-    end,
-    ["*"] = function()
-      return vim.fn.getreg("*"), vim.fn.getregtype("*")
-    end,
-  },
+    -- paste：直接走默认（不走 OSC52）
+    paste = {
+        ["+"] = function()
+            return vim.fn.getreg("+"), vim.fn.getregtype("+")
+        end,
+        ["*"] = function()
+            return vim.fn.getreg("*"), vim.fn.getregtype("*")
+        end,
+    },
 }
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-  callback = function()
-    if vim.bo.buftype ~= "" then
-      return
-    end
+    callback = function()
+        if vim.bo.buftype ~= "" then
+            return
+        end
 
-    local view = vim.fn.winsaveview()
+        local view = vim.fn.winsaveview()
 
-    -- 删除行尾空白
-    vim.cmd([[%s/\s\+$//e]])
+        -- 删除行尾空白
+        vim.cmd([[%s/\s\+$//e]])
 
-    -- 保证文件末尾只有一个换行
-    vim.cmd([[%s/\(\n\)\+\%$//e]])
+        -- 保证文件末尾只有一个换行
+        vim.cmd([[%s/\(\n\)\+\%$//e]])
 
-    vim.fn.winrestview(view)
-  end,
+        vim.fn.winrestview(view)
+    end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  group = vim.api.nvim_create_augroup("TSFold", { clear = true }),
-  callback = function(args)
-    if vim.bo[args.buf].buftype ~= "" then
-      return
-    end
-    vim.wo.foldmethod = "expr"
-    vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-    vim.wo.foldenable = true
-    vim.wo.foldlevel = 99 -- 99=默认全部展开；想要打开即折叠改成 0
-  end,
+    group = vim.api.nvim_create_augroup("TSFold", { clear = true }),
+    callback = function(args)
+        if vim.bo[args.buf].buftype ~= "" then
+            return
+        end
+        vim.wo.foldmethod = "expr"
+        vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+        vim.wo.foldenable = true
+        vim.wo.foldlevel = 99 -- 99=默认全部展开；想要打开即折叠改成 0
+    end,
 })

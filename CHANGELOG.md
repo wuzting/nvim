@@ -12,10 +12,13 @@
 ### 新增
 - 新增 `CHANGELOG.md`（简体中文）与英文版 `CHANGELOG.en.md`。
 - 新增 MIT `LICENSE`。
+- 新增 GitHub Actions CI（StyLua 格式检查 + luacheck 静态检查）。
+- 新增 `.luacheckrc` 与 `stylua.toml` 配置。
 
 ### 变更
 - 仓库重命名为 `wznvim`，并同步更新所有引用。
 - 默认 README 改为简体中文，英文版移至 `README.en.md`。
+- 使用 StyLua 统一全部 Lua 代码格式，并修复 luacheck 报告的问题。
 
 ## [0.1.0] - 2026-09-23
 

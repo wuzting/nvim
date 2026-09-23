@@ -1,5 +1,5 @@
 local options = {
-    max_length = 0,       -- 不限制长度
+    max_length = 0, -- 不限制长度
     silent = false,
     trim = false,
 }

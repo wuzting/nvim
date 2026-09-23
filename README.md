@@ -1,5 +1,7 @@
 # nvim
 
+[![CI](https://github.com/wuzting/wznvim/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/wznvim/actions/workflows/ci.yml)
+
 [English](README.en.md) | **简体中文**
 
 一个使用 Lua 编写、由 [lazy.nvim](https://github.com/folke/lazy.nvim) 管理的模块化

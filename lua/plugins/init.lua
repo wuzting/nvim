@@ -1,32 +1,32 @@
 local default_plugins = {
     -- alpha， 状态栏
     {
-        'goolord/alpha-nvim',
+        "goolord/alpha-nvim",
         lazy = false,
         config = function()
             require("plugins.configs.alpha")
-        end
+        end,
     },
     -- lualine， 状态栏
     {
-        'nvim-lualine/lualine.nvim',
+        "nvim-lualine/lualine.nvim",
         lazy = false,
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()
             require("lualine").setup()
-        end
+        end,
     },
     {
-        'akinsho/bufferline.nvim',
+        "akinsho/bufferline.nvim",
         lazy = false,
         version = "*",
-        dependencies = 'nvim-tree/nvim-web-devicons',
+        dependencies = "nvim-tree/nvim-web-devicons",
         init = function()
-            require("core.utils").load_mappings "bufferline"
+            require("core.utils").load_mappings("bufferline")
         end,
         config = function()
             require("bufferline").setup()
-        end
+        end,
     },
 
     -- {
@@ -49,8 +49,8 @@ local default_plugins = {
         lazy = false,
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "tokyonight"
-        end
+            vim.cmd.colorscheme("tokyonight")
+        end,
     },
 
     -- file managing , picker etc， 文件管理器
@@ -58,10 +58,10 @@ local default_plugins = {
         "nvim-tree/nvim-tree.lua",
         cmd = { "NvimTreeToggle", "NvimTreeFocus" },
         init = function()
-            require("core.utils").load_mappings "nvimtree"
+            require("core.utils").load_mappings("nvimtree")
         end,
         opts = function()
-            return require "plugins.configs.nvimtree"
+            return require("plugins.configs.nvimtree")
         end,
         config = function(_, opts)
             require("nvim-tree").setup(opts)
@@ -74,13 +74,13 @@ local default_plugins = {
         -- tag = "v0.1.9",
         cmd = "Telescope",
         init = function()
-            require("core.utils").load_mappings "telescope"
+            require("core.utils").load_mappings("telescope")
         end,
         opts = function()
-            return require "plugins.configs.telescope"
+            return require("plugins.configs.telescope")
         end,
         config = function(_, opts)
-            local telescope = require "telescope"
+            local telescope = require("telescope")
             telescope.setup(opts)
 
             -- load extensions
@@ -94,12 +94,12 @@ local default_plugins = {
         "nvim-treesitter/nvim-treesitter",
         branch = "master",
         init = function()
-            require("core.utils").lazy_load "nvim-treesitter"
+            require("core.utils").lazy_load("nvim-treesitter")
         end,
         cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
         build = ":TSUpdate",
         opts = function()
-            return require "plugins.configs.treesitter"
+            return require("plugins.configs.treesitter")
         end,
         config = function(_, opts)
             require("nvim-treesitter.configs").setup(opts)
@@ -108,15 +108,24 @@ local default_plugins = {
     -- lsp stuff， 安装语言服务器、调试器和其他开发工具
     {
         "williamboman/mason.nvim",
-        cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
+        cmd = {
+            "Mason",
+            "MasonInstall",
+            "MasonInstallAll",
+            "MasonUninstall",
+            "MasonUninstallAll",
+            "MasonLog",
+        },
         opts = function()
-            return require "plugins.configs.mason"
+            return require("plugins.configs.mason")
         end,
         config = function(_, opts)
             require("mason").setup(opts)
 
             vim.api.nvim_create_user_command("MasonInstallAll", function()
-                vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+                vim.cmd(
+                    "MasonInstall " .. table.concat(opts.ensure_installed, " ")
+                )
             end, {})
 
             vim.g.mason_binaries_list = opts.ensure_installed
@@ -127,11 +136,11 @@ local default_plugins = {
     {
         "neovim/nvim-lspconfig",
         init = function()
-            require("core.utils").lazy_load "nvim-lspconfig"
+            require("core.utils").lazy_load("nvim-lspconfig")
         end,
         -- tag = "v2.3.0",
         config = function()
-            require "plugins.configs.lspconfig"
+            require("plugins.configs.lspconfig")
         end,
     },
 
@@ -140,7 +149,7 @@ local default_plugins = {
         "phaazon/hop.nvim",
         cmd = { "HopWord", "HopChar1" },
         init = function()
-            require("core.utils").load_mappings "hop"
+            require("core.utils").load_mappings("hop")
         end,
         branch = "v2.0",
         config = function()
@@ -151,7 +160,7 @@ local default_plugins = {
     {
         "lukas-reineke/indent-blankline.nvim",
         init = function()
-            require("core.utils").lazy_load "indent-blankline.nvim"
+            require("core.utils").lazy_load("indent-blankline.nvim")
         end,
         opts = function()
             return require("plugins.configs.blankline")
@@ -170,7 +179,10 @@ local default_plugins = {
                 -- snippet plugin
                 "L3MON4D3/LuaSnip",
                 dependencies = "rafamadriz/friendly-snippets",
-                opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+                opts = {
+                    history = true,
+                    updateevents = "TextChanged,TextChangedI",
+                },
                 config = function(_, opts)
                     require("plugins.configs.others").luasnip(opts)
                 end,
@@ -187,8 +199,12 @@ local default_plugins = {
                     require("nvim-autopairs").setup(opts)
 
                     -- setup cmp for autopairs
-                    local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-                    require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+                    local cmp_autopairs =
+                        require("nvim-autopairs.completion.cmp")
+                    require("cmp").event:on(
+                        "confirm_done",
+                        cmp_autopairs.on_confirm_done()
+                    )
                 end,
             },
 
@@ -202,7 +218,7 @@ local default_plugins = {
             },
         },
         opts = function()
-            return require "plugins.configs.cmp"
+            return require("plugins.configs.cmp")
         end,
         config = function(_, opts)
             require("cmp").setup(opts)
@@ -212,21 +228,21 @@ local default_plugins = {
     {
         "supermaven-inc/supermaven-nvim",
         init = function()
-            require("core.utils").lazy_load "supermaven-nvim"
+            require("core.utils").lazy_load("supermaven-nvim")
         end,
         opts = function()
-            return require "plugins.configs.supermaven"
+            return require("plugins.configs.supermaven")
         end,
         config = function(_, opts)
             require("supermaven-nvim").setup(opts)
-        end
+        end,
     },
     -- 面板插件
     {
         "folke/which-key.nvim",
         keys = { "<leader>", '"', "'", "`", "c", "v" },
         init = function()
-            require("core.utils").load_mappings "whichkey"
+            require("core.utils").load_mappings("whichkey")
         end,
         config = function(_, opts)
             require("which-key").setup(opts)
@@ -237,7 +253,7 @@ local default_plugins = {
         "numToStr/Comment.nvim",
         keys = { "gcc", "gbc" },
         init = function()
-            require("core.utils").load_mappings "comment"
+            require("core.utils").load_mappings("comment")
         end,
         config = function()
             require("Comment").setup()
@@ -249,7 +265,7 @@ local default_plugins = {
         version = "*",
         lazy = false,
         init = function()
-            require("core.utils").load_mappings "toggleterm"
+            require("core.utils").load_mappings("toggleterm")
         end,
         opts = function()
             return require("plugins.configs.toggleterm")
@@ -307,13 +323,24 @@ local default_plugins = {
         init = function()
             -- load gitsigns only when a git file is opened
             vim.api.nvim_create_autocmd({ "BufRead" }, {
-                group = vim.api.nvim_create_augroup("GitSignsLazyLoad", { clear = true }),
+                group = vim.api.nvim_create_augroup(
+                    "GitSignsLazyLoad",
+                    { clear = true }
+                ),
                 callback = function()
-                    vim.fn.system("git -C " .. '"' .. vim.fn.expand "%:p:h" .. '"' .. " rev-parse")
+                    vim.fn.system(
+                        "git -C "
+                            .. '"'
+                            .. vim.fn.expand("%:p:h")
+                            .. '"'
+                            .. " rev-parse"
+                    )
                     if vim.v.shell_error == 0 then
-                        vim.api.nvim_del_augroup_by_name "GitSignsLazyLoad"
+                        vim.api.nvim_del_augroup_by_name("GitSignsLazyLoad")
                         vim.schedule(function()
-                            require("lazy").load { plugins = { "gitsigns.nvim" } }
+                            require("lazy").load({
+                                plugins = { "gitsigns.nvim" },
+                            })
                         end)
                     end
                 end,
@@ -332,21 +359,21 @@ local default_plugins = {
         tag = "v0.8.0",
         lazy = false,
         init = function()
-            require("core.utils").load_mappings "opencode"
+            require("core.utils").load_mappings("opencode")
         end,
         dependencies = {
             {
                 "folke/snacks.nvim",
-                opts = { input = {}, picker = {}, terminal = {} }
+                opts = { input = {}, picker = {}, terminal = {} },
             },
         },
         config = function()
             vim.g.opencode_opts = {
-                bin = "/home/wdc/.opencode/bin/opencode"
+                bin = "/home/wdc/.opencode/bin/opencode",
             }
             vim.o.autoread = true
         end,
-    }
+    },
 }
 
 local config = require("core.utils").load_config()

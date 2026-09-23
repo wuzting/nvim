@@ -30,40 +30,66 @@ M.general = {
         ["<leader>n"] = { "<cmd> set nu! <CR>", "toggle line number" },
         ["<leader>rn"] = { "<cmd> set rnu! <CR>", "toggle relative number" },
         ["<leader>sl"] = {
-            function() vim.diagnostic.setloclist() end,
-            "setloclist"
+            function()
+                vim.diagnostic.setloclist()
+            end,
+            "setloclist",
         },
 
         -- Allow moving the cursor through wrapped lines with j, k, <Up> and <Down>
         -- http://www.reddit.com/r/vim/comments/2k4cbr/problem_with_gj_and_gk/
         -- empty mode is same as using <cmd> :map
         -- also don't use g[j|k] when in operator pending mode, so it doesn't alter d, y or c behaviour
-        ["j"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
-        ["k"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
-        ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
-        ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
+        ["j"] = {
+            'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+            "move down",
+            opts = { expr = true },
+        },
+        ["k"] = {
+            'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+            "move up",
+            opts = { expr = true },
+        },
+        ["<Up>"] = {
+            'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+            "move up",
+            opts = { expr = true },
+        },
+        ["<Down>"] = {
+            'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+            "move down",
+            opts = { expr = true },
+        },
         -- new buffer
         ["<leader>b"] = { "<cmd> enew <CR>", "new buffer" },
         ["<leader>ch"] = { "<cmd> NvCheatsheet <CR>", "Mapping cheatsheet" },
         ["<A-j>"] = { "4<C-e>", "down 4 line" },
         ["<A-k>"] = { "4<C-y>", "up 4 line" },
         ["<S-u>"] = { ":redo <CR>", "redo" },
-        ["<leader>y"] = { "\"+y", "copy" },
-        ["<leader>p"] = { "\"+p", "parse" },
-        [";"] = { ":", "enter command mode", opts = { nowait = true } }
+        ["<leader>y"] = { '"+y', "copy" },
+        ["<leader>p"] = { '"+p', "parse" },
+        [";"] = { ":", "enter command mode", opts = { nowait = true } },
     },
     v = {
-        ["<Up>"] = { 'v:count || mode(1)[0:1] == "no" ? "k" : "gk"', "move up", opts = { expr = true } },
-        ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', "move down", opts = { expr = true } },
+        ["<Up>"] = {
+            'v:count || mode(1)[0:1] == "no" ? "k" : "gk"',
+            "move up",
+            opts = { expr = true },
+        },
+        ["<Down>"] = {
+            'v:count || mode(1)[0:1] == "no" ? "j" : "gj"',
+            "move down",
+            opts = { expr = true },
+        },
     },
 
     t = {
-        ["<C-x>"] = { vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true), "escape terminal mode" },
+        ["<C-x>"] = {
+            vim.api.nvim_replace_termcodes("<C-\\><C-N>", true, true, true),
+            "escape terminal mode",
+        },
     },
-
-
 }
-
 
 M.nvimtree = {
     plugin = true,
@@ -83,12 +109,18 @@ M.telescope = {
     n = {
         -- find
         ["<leader>ff"] = { "<cmd> Telescope find_files <CR>", "find files" },
-        ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "find all" },
+        ["<leader>fa"] = {
+            "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>",
+            "find all",
+        },
         ["<leader>fw"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
         ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "find buffers" },
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help page" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "find oldfiles" },
-        ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "find in current buffer" },
+        ["<leader>fz"] = {
+            "<cmd> Telescope current_buffer_fuzzy_find <CR>",
+            "find in current buffer",
+        },
 
         -- git
         ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
@@ -124,7 +156,7 @@ M.lspconfig = {
 
         ["<A-o>"] = {
             "<cmd> ClangdSwitchSourceHeader <CR>",
-            "switch source header"
+            "switch source header",
         },
 
         ["K"] = {
@@ -157,7 +189,6 @@ M.lspconfig = {
             "lsp definition type",
         },
 
-
         ["<leader>ca"] = {
             function()
                 vim.lsp.buf.code_action()
@@ -174,7 +205,7 @@ M.lspconfig = {
 
         ["<leader>f"] = {
             function()
-                vim.diagnostic.open_float { border = "rounded" }
+                vim.diagnostic.open_float({ border = "rounded" })
             end,
             "floating diagnostic",
         },
@@ -188,7 +219,7 @@ M.lspconfig = {
 
         ["<leader>fm"] = {
             function()
-                vim.lsp.buf.format { async = true }
+                vim.lsp.buf.format({ async = true })
             end,
             "lsp formatting",
         },
@@ -219,8 +250,8 @@ M.lspconfig = {
 M.hop = {
     n = {
         ["s"] = { "<cmd> HopWord<cr>", "hop word" },
-        ["ss"] = { "<cmd> HopChar1<cr>", "hop line" }
-    }
+        ["ss"] = { "<cmd> HopChar1<cr>", "hop line" },
+    },
 }
 
 M.blankline = {
@@ -235,8 +266,11 @@ M.blankline = {
                 )
 
                 if ok then
-                    vim.api.nvim_win_set_cursor(vim.api.nvim_get_current_win(), { start, 0 })
-                    vim.cmd [[normal! _]]
+                    vim.api.nvim_win_set_cursor(
+                        vim.api.nvim_get_current_win(),
+                        { start, 0 }
+                    )
+                    vim.cmd([[normal! _]])
                 end
             end,
 
@@ -248,11 +282,17 @@ M.blankline = {
 M.bufferline = {
     plugin = true,
     n = {
-        ["<C-Right>"] = { "<cmd> BufferLineCycleNext <CR>", "cycle next buffer" },
+        ["<C-Right>"] = {
+            "<cmd> BufferLineCycleNext <CR>",
+            "cycle next buffer",
+        },
         ["<C-Left>"] = { "<cmd> BufferLineCyclePrev <CR>", "cycle prev buffer" },
         ["<leader>bb"] = { "<cmd> BufferLinePick <CR>", "pick buffer" },
-        ["<leader>bd"] = { "<cmd> BufferLinePickClose <CR>", "pick buffer and close" },
-    }
+        ["<leader>bd"] = {
+            "<cmd> BufferLinePickClose <CR>",
+            "pick buffer and close",
+        },
+    },
 }
 
 M.whichkey = {
@@ -261,13 +301,13 @@ M.whichkey = {
     n = {
         ["<leader>wK"] = {
             function()
-                vim.cmd "WhichKey"
+                vim.cmd("WhichKey")
             end,
             "which-key all keymaps",
         },
         ["<leader>wk"] = {
             function()
-                local input = vim.fn.input "WhichKey: "
+                local input = vim.fn.input("WhichKey: ")
                 vim.cmd("WhichKey " .. input)
             end,
             "which-key query lookup",
@@ -483,7 +523,7 @@ M.codecompanion = {
             "<cmd> CodeCompanion<CR>",
             "code companion",
         },
-    }
+    },
 }
 
 M.opencode = {

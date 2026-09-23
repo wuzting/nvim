@@ -17,7 +17,7 @@ local options = {
             CmpBorder = { fg = colors.surface2 },
             Pmenu = { bg = colors.none },
         }
-    end
+    end,
 }
 
 return options

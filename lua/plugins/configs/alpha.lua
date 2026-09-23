@@ -32,7 +32,12 @@ dashboard.section.buttons.val = {
 
 -- 底部提示
 dashboard.section.footer.val = function()
-    return "Neovim " .. vim.version().major .. "." .. vim.version().minor .. "." .. vim.version().patch
+    return "Neovim "
+        .. vim.version().major
+        .. "."
+        .. vim.version().minor
+        .. "."
+        .. vim.version().patch
 end
 
 -- 布局微调（让它更像 NvChad）

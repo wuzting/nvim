@@ -1,6 +1,4 @@
-local options = {}
-
-options = {
+local options = {
     debounce = 300,
     scope = {
         enabled = true,
@@ -22,8 +20,7 @@ options = {
                 },
             },
         },
-    }
-
+    },
 }
 
 return options

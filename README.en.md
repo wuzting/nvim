@@ -1,5 +1,7 @@
 # nvim
 
+[![CI](https://github.com/wuzting/wznvim/actions/workflows/ci.yml/badge.svg)](https://github.com/wuzting/wznvim/actions/workflows/ci.yml)
+
 **English** | [简体中文](README.md)
 
 A personal, modular Neovim configuration written in Lua and managed by
