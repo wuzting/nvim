@@ -45,6 +45,8 @@ nvim
 ├── lazy-lock.json               # 锁定的插件版本
 ├── .luarc.json                  # Lua Language Server 配置
 ├── AGENTS.md                    # 面向 AI 编程助手的说明
+├── CHANGELOG.md                 # 版本变更记录
+├── LICENSE                      # MIT 许可证
 └── lua/
     ├── core/
     │   ├── bootstrap.lua        # 缺失时自动安装 lazy.nvim
@@ -238,4 +240,4 @@ M.myplugin = {
 
 ## 许可证
 
-个人配置，按原样提供。各插件请遵循其各自的许可证。
+本项目基于 [MIT License](LICENSE) 发布，第三方插件仍遵循其各自的许可证。

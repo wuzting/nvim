@@ -47,6 +47,8 @@ plugin set. Finish the setup with:
 ├── lazy-lock.json               # Pinned plugin revisions
 ├── .luarc.json                  # Lua Language Server config
 ├── AGENTS.md                    # Guidance for AI coding assistants
+├── CHANGELOG.md                 # Release history
+├── LICENSE                      # MIT license
 └── lua/
     ├── core/
     │   ├── bootstrap.lua        # Installs lazy.nvim when missing
@@ -244,4 +246,5 @@ M.myplugin = {
 
 ## License
 
-Personal configuration, provided as-is. Refer to each plugin's own license.
+Released under the [MIT License](LICENSE). Third-party plugins remain under
+their own respective licenses.
