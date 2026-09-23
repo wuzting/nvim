@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `CHANGELOG.md` and an MIT `LICENSE`.
+
+### Changed
+- Rename the repository to `wznvim` and update all references.
+- Make Simplified Chinese the default README; English now lives in
+  `README.en.md`.
+
 ## [0.1.0] - 2026-09-23
 
 First tagged release.
